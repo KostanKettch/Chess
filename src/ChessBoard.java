@@ -93,11 +93,12 @@ public class ChessBoard {
             } else return false;
         }
     }
+
     public boolean castling7() {
         if (nowPlayer.equals("White")) {
             if (board[0][7] == null || board[0][4] == null) return false;
             if (board[0][7].getSymbol().equals("R") && board[0][4].getSymbol().equals("K") && // check that King and Rook
-                    board[0][5] == null && board[0][6] == null ) {              // never moved
+                    board[0][5] == null && board[0][6] == null) {              // never moved
                 if (board[0][7].getColor().equals("White") && board[0][4].getColor().equals("White") &&
                         board[0][7].check && board[0][4].check &&
                         !new King("White").isUnderAttack(this, 0, 6)) { // check that position not in under attack
