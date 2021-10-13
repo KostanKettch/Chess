@@ -1,6 +1,7 @@
 public abstract class ChessPiece {
     String color;
     boolean check = true;
+    String symbol;
 
 
     public abstract String getColor();

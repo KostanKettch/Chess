@@ -1,13 +1,13 @@
-public class Horse extends ChessPiece {
-    String symbol = "H";
+public class Pawn extends ChessPiece {
+    String symbol = "P";
 
-    public Horse(String color) {
+    public Pawn(String color) {
         super(color);
     }
 
     @Override
     public String getColor() {
-        return this.color;
+        return super.color;
     }
 
     @Override
@@ -19,9 +19,11 @@ public class Horse extends ChessPiece {
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         if (line == toLine && column == toColumn || !chessBoard.checkPos(toLine) || !chessBoard.checkPos(toColumn))
             return false;
-
-        if ((Math.abs(toLine - line) == 2 && Math.abs(toColumn - column) == 1) ||
-                (Math.abs(toLine - line) == 1 && Math.abs(toColumn - column) == 2)) return true;
+        int startPos;
+        if (color.equals("White")) startPos = 1;
+        else startPos = 6;
+        if (toColumn == column && (Math.abs(toLine - line) == 1 || (line == startPos && Math.abs(toLine - line) == 2)))
+            return true;
         return false;
     }
 
